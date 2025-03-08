@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     const token = jwt.sign(
       { userId: user._id, username: user.username },
       JWT_SECRET,
-      { expiresIn: '24h' }
+      { expiresIn: '10s' } // Changed from 24h to 10 seconds
     );
     
     // Set token in HTTP-only cookie
@@ -53,11 +53,11 @@ export async function POST(request: Request) {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 60 * 60 * 24, // 1 day
+      maxAge: 10, // Changed from 24 hours (86400) to 10 seconds
       path: '/',
     });
     
-    console.log(`Login successful for username: ${username}`);
+    console.log(`Login successful for username: ${username} - Session will expire in 10 seconds`);
     
     // Return success response with user info (without password)
     return NextResponse.json({

@@ -7,11 +7,28 @@ import Link from 'next/link';
 const WelcomePage = () => {
     const [username, setUsername] = useState<string | null>(null);
     const router = useRouter();
+    const [secondsLeft, setSecondsLeft] = useState(10);
 
     useEffect(() => {
         const user = localStorage.getItem('username');
         if (user) {
             setUsername(user);
+            
+            // Set a countdown timer for the session expiration (10 seconds)
+            const timer = setInterval(() => {
+                setSecondsLeft(prev => {
+                    if (prev <= 1) {
+                        clearInterval(timer);
+                        // Redirect to login page when timer reaches zero
+                        router.push('/login');
+                        return 0;
+                    }
+                    return prev - 1;
+                });
+            }, 1000);
+
+            // Clean up the interval
+            return () => clearInterval(timer);
         } else {
             router.push('/login');
         }
@@ -47,6 +64,7 @@ const WelcomePage = () => {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
             <h1 className="text-3xl font-bold">Hello, {username}!</h1>
+            <p className="mt-2 text-gray-600">Session expires in: {secondsLeft} seconds</p>
             <div className="mt-4 flex flex-col gap-2 items-center">
                 <button
                     onClick={handleLogout}
