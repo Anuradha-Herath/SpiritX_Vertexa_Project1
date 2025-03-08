@@ -1,0 +1,47 @@
+:root {
+  --primary-color: #3b82f6; /* Tailwind's blue-500 */
+  --secondary-color: #fbbf24; /* Tailwind's yellow-400 */
+  --background-color: #f9fafb; /* Tailwind's gray-100 */
+  --text-color: #111827; /* Tailwind's gray-900 */
+  --border-color: #e5e7eb; /* Tailwind's gray-300 */
+}
+
+* {
+  @apply box-border;
+}
+
+html, body {
+  @apply h-full;
+}
+
+body {
+  @apply bg-background-color text-text-color font-sans;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold;
+}
+
+a {
+  @apply text-primary-color hover:text-blue-700;
+}
+
+button {
+  @apply bg-primary-color text-white font-semibold py-2 px-4 rounded;
+}
+
+input {
+  @apply border border-border-color rounded-md p-2;
+}
+
+input:focus {
+  @apply outline-none border-primary-color;
+}
+
+.error-message {
+  @apply text-red-500 text-sm mt-1;
+}
+
+.success-message {
+  @apply text-green-500 text-sm mt-1;
+}
