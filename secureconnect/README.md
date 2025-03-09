@@ -2,17 +2,15 @@
 
 SecureConnect is a secure authentication system built using Next.js (TypeScript), MongoDB, JWT, and Tailwind CSS. This project implements signup and login workflows with validation, error handling, and session management, ensuring a seamless integration between the frontend, backend, and database.
 
-## Features
+## Instructions to Run the Project
 
-- **User Authentication**: Secure signup and login processes with JWT for session management.
-- **Real-time Validation**: Input fields for username and password include real-time validation and error messages.
-- **Password Strength Indicator**: Visual feedback on password strength during signup.
-- **Responsive Design**: Tailwind CSS is used for a responsive and modern UI.
-- **Session Management**: JWT stored in HTTP-only cookies for enhanced security.
-- **Error Handling**: Comprehensive error handling for user input and API responses.
+### Prerequisites
 
-## Project Structure
+- Node.js (version 14 or higher)
+- MongoDB (local or cloud instance)
+- npm or yarn package manager
 
+### Step 1: Clone the Repository
 ```
 secureconnect
 ├── src
